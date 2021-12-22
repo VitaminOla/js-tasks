@@ -5,6 +5,15 @@ openButton.addEventListener("click", e => {
   const overlayElement = document.createElement("div");
   overlayElement.classList.add("overlay");
 
+  overlayElement.addEventListener("click", e => {
+    // if (!e.target.classList.contains("content")) {
+    //   closeElement.click();
+    // }
+    if (e.target == overlayElement) {
+      closeElement.click();
+    }
+  });
+
   const containerElement = document.createElement("div");
   containerElement.classList.add("modal-container");
 
@@ -18,6 +27,11 @@ openButton.addEventListener("click", e => {
   closeElement.textContent = "x";
   closeElement.href = "#";
   
+  closeElement.addEventListener("click", e => {
+    e.preventDefault();
+    body.removeChild(overlayElement);
+  });
+
   overlayElement.appendChild(containerElement);
   contentElement.appendChild(closeElement);
   containerElement.appendChild(contentElement);
