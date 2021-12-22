@@ -21,5 +21,24 @@ quantitySelector.addEventListener("change", e => {
   const markup = createMarkup(quantity);
 
   blocksContainer.innerHTML = markup;
-  
+});
+
+const colorTheBlock = (block, color) => {
+  block.style.backgroundColor = color;
+};
+
+colorSelector.addEventListener("change", e => {
+  const color = e.target.value;
+  const items = blocksContainer.querySelectorAll(".item");
+
+  for (let i = 0; i < items.length; i++) {
+    const currentBlock = items[i];
+    const blockNumber = i + 1;
+
+    if (blockNumber % 2 == 1) {
+      colorTheBlock(currentBlock, color);
+    }
+    
+  }
+
 })
