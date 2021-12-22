@@ -38,22 +38,14 @@ colorSelector.addEventListener("change", e => {
   for (let i = 0; i < items.length; i++) {
     const currentBlock = items[i];
     const blockNumber = i + 1;
+    let colorToApply = "";
 
     if (changed) {
-      if (blockNumber % 2 == 1) {
-      colorTheBlock(currentBlock, color);
+      colorToApply = blockNumber % 2 == 1 ? color : "#fff";
       } else {
-        colorTheBlock(currentBlock, "#fff");
+        colorToApply = blockNumber % 2 == 0 ? color : "#fff";
       }
-    } else {
-      if (blockNumber % 2 == 0) {
-        colorTheBlock(currentBlock, color);
-        } else {
-          colorTheBlock(currentBlock, "#fff");
-        }
+    
+      colorTheBlock(currentBlock, colorToApply);
     }
-    
-    
-  }
-
-})
+  });
