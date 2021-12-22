@@ -27,17 +27,32 @@ const colorTheBlock = (block, color) => {
   block.style.backgroundColor = color;
 };
 
+let changed = false;
+
 colorSelector.addEventListener("change", e => {
   const color = e.target.value;
   const items = blocksContainer.querySelectorAll(".item");
+
+  changed = !changed;
 
   for (let i = 0; i < items.length; i++) {
     const currentBlock = items[i];
     const blockNumber = i + 1;
 
-    if (blockNumber % 2 == 1) {
+    if (changed) {
+      if (blockNumber % 2 == 1) {
       colorTheBlock(currentBlock, color);
+      } else {
+        colorTheBlock(currentBlock, "#fff");
+      }
+    } else {
+      if (blockNumber % 2 == 0) {
+        colorTheBlock(currentBlock, color);
+        } else {
+          colorTheBlock(currentBlock, "#fff");
+        }
     }
+    
     
   }
 
